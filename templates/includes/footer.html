@@ -1,0 +1,79 @@
+{% load static %}
+
+<footer class="ppage_footer ds ms bg_image section_padding_50">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-6 col-sm-6 to_animate">
+        <a href="./" class="logo top_logo text-left bottommargin_10">
+          <img src="{{ org_links.organization.logo.url }}" alt="" style="width: 68px;">
+          <!-- <img src="{% static 'images/logo.png' %}" alt=""> -->
+          <span class="logo_text">
+            <strong class="playfair">{{ org_links}}</strong>
+            <span class="small-text">Raising endtime saints</span>
+          </span>
+        </a>
+
+        <p>{{ org_links.organization_overview }}</p>
+
+        <p class="greylinks">
+					<a href="#" class="social-icon color-icon border-icon rounded-icon soc-facebook"></a>
+					<a href="#" class="social-icon color-icon border-icon rounded-icon soc-twitter"></a>
+					<a href="#" class="social-icon color-icon border-icon rounded-icon soc-google"></a>
+					<a href="#" class="social-icon color-icon border-icon rounded-icon soc-linkedin"></a>
+					<a href="#" class="social-icon color-icon border-icon rounded-icon soc-pinterest"></a>
+				</p>
+
+      </div>
+
+      <div class="col-md-3 col-sm-6 to_animate">
+        <div class="widget widget_recent_entries">
+          <h3 class="widget-title">Latest Posts</h3>
+          <ul>
+            {% for article in blog_links %}
+            <li>
+              <p class="post-date">
+                <a href="blog-single-right.html">{{ article.created_date }}</a>
+              </p>
+              <p>{{ article.article_title }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 col-sm-6 to_animate">
+        <div class="widget_text">
+          <h3 class="widget-title">Contact Us</h3>
+          <p>{{ org_links.organization.address_line_1 }}, {{ org_links.organization.city }}, {{ org_links.organization.country }}</p>
+          <ul class="list1 no-bullets">
+            <li>
+              <i class="rt-icon2-device-phone highlight"></i> {{ org_links.organization.phone }}
+            </li>
+            <li>
+              <i class="rt-icon2-globe-outline highlight"></i> <a href="./">{{ org_links.organization.website_address }}</a>
+            </li>
+            <li>
+              <i class="rt-icon2-mail2 highlight"></i> <a href="mailto:info@company.com">{{ org_links.organization.email }}</a>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<section class="ls page_copyright table_section section_padding_50">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p class="grey thin">&copy; Copyright {% now 'Y' %} All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</section>

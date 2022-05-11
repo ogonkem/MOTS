@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load myapp_tags %}
+
+{% block content %}
+
+
+<section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="highlight bold">Blog Article</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="{% url 'MOTS' %}">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'blog' %}">Blog</a>
+          </li>
+          <li class="active">Article</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ls section_padding_top_100 section_padding_bottom_100 columns_padding_25">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-7 col-md-8 col-lg-8">
+
+        <article class="single-post vertical-item with_background">
+          <div class="entry-thumbnail item-media">
+            <img src="{{ MEDIA_URL }}{{ article.image }}" alt="">
+          </div>
+          <div class="item-content">
+
+            <div class="with_padding">
+
+              <header class="entry-header">
+
+                <h1 class="entry-title playfair">
+                  <a href="#" rel="bookmark">{{ article.article_title }}</a>
+                </h1>
+
+              </header>
+              <!-- .entry-header -->
+
+              <div class="entry-content">
+                {% for paragraph in paragraphs %}
+                  <h5 class="playfair"><a href="#">{{ paragraph.paragraph_title }}</a></h5>
+                  {% with paragraph.paragraph_content|split:'/n/n' as phrases %}
+                  {% for phrase in phrases %}
+                  <p>{{ phrase }}</p>
+                  {% endfor %}
+                  {% endwith %}
+                  <br/>
+                {% endfor %}
+
+              </div>
+              <!-- .entry-content -->
+            </div>
+
+            <footer class="with_top_border entry-meta highlightlinks">
+              <div class="content-justify">
+                <span class="entry-date">
+                  <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+                    {{article.created_date|date:"M, d, Y" }}
+                  </time>
+                </span>
+                {% for author in authors %}
+                    <a href="#">{{ author.first_name }} {{ author.last_name }}</a>
+                {% endfor %}
+              </div>
+            </footer>
+
+          </div>
+          <!-- .item-content -->
+
+        </article>
+
+
+        <div class="author-meta side-item content-padding with_background">
+
+          <div class="row">
+            {% for author in authors %}
+                <div class="col-md-4">
+                  <div class="item-media">
+                    <img src="{{ MEDIA_URL }}{{ author.photo }}" alt="">
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+                  <div class="item-content">
+                    <h4>{{ author.first_name }} {{ author.last_name }}</h4>
+
+                    <p>{{ author.company_name }}</p>
+                    <p>{{ author.company_url }}</p>
+                    <!-- <div class="author-social"> -->
+                    <div class="lightgreylinks">
+                      <a href="#" class="social-icon soc-facebook"></a>
+                      <a href="#" class="social-icon soc-twitter"></a>
+                      <a href="#" class="social-icon soc-google"></a>
+                    </div>
+
+                  </div>
+                </div>
+          {% endfor %}
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <!--eof .col-sm-8 (main content)-->
+
+
+      <!-- sidebar -->
+      <aside class="col-sm-5 col-md-4 col-lg-4">
+
+
+        <div class="widget widget_apsc_widget">
+          <h3 class="widget-title">Get In Touch</h3>
+          <div class="apsc-icons-wrapper clearfix apsc-theme-4">
+            <div class="apsc-each-profile">
+              <a class="apsc-facebook-icon clearfix" href="#">
+                <div class="apsc-inner-block">
+                  <span class="social-icon">
+                    <i class="fa fa-facebook apsc-facebook"></i>
+                    <span class="media-name">Facebook</span>
+                  </span>
+                  <span class="apsc-count">9.8K</span>
+                  <span class="apsc-media-type">Fans</span>
+                </div>
+              </a>
+            </div>
+            <div class="apsc-each-profile">
+              <a class="apsc-twitter-icon clearfix" href="#">
+                <div class="apsc-inner-block">
+                  <span class="social-icon">
+                    <i class="fa fa-twitter apsc-twitter"></i>
+                    <span class="media-name">Twitter</span>
+                  </span>
+                  <span class="apsc-count">4.9K</span>
+                  <span class="apsc-media-type">Followers</span>
+                </div>
+              </a>
+            </div>
+            <div class="apsc-each-profile">
+              <a class="apsc-google-plus-icon clearfix" href="#">
+                <div class="apsc-inner-block">
+                  <span class="social-icon">
+                    <i class="apsc-googlePlus fa fa-google-plus"></i>
+                    <span class="media-name">google+</span>
+                  </span>
+                  <span class="apsc-count">10.1M</span>
+                  <span class="apsc-media-type">Followers</span>
+                </div>
+              </a>
+            </div>
+            <div class="apsc-each-profile">
+              <a class="apsc-instagram-icon clearfix" href="#">
+                <div class="apsc-inner-block">
+                  <span class="social-icon">
+                    <i class="apsc-instagram fa fa-instagram"></i>
+                    <span class="media-name">Instagram</span>
+                  </span>
+                  <span class="apsc-count">4</span>
+                  <span class="apsc-media-type">Followers</span>
+                </div>
+              </a>
+            </div>
+            <div class="apsc-each-profile">
+              <a class="apsc-youtube-icon clearfix" href="#">
+                <div class="apsc-inner-block">
+                  <span class="social-icon">
+                    <i class="apsc-youtube fa fa-youtube"></i>
+                    <span class="media-name">Youtube</span>
+                  </span>
+                  <span class="apsc-count">2.2K</span>
+                  <span class="apsc-media-type">Subscriber</span>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="widget widget_mailchimp">
+
+          <h3 class="widget-title">Newsletter</h3>
+
+          <form class="signup form-inline" action="./" method="get">
+            <div class="form-group">
+              <input name="email" type="email" class="mailchimp_email form-control" placeholder="Email">
+            </div>
+            <button type="submit" class="theme_button color1">Send</button>
+            <div class="response"></div>
+          </form>
+
+          <p>Subscribe to our latest news to be updated, we promise not to spam!</p>
+
+        </div>
+
+        <div class="widget widget_search">
+          <h3 class="widget-title">Search on Website</h3>
+          <form class=" form-inline" action="{% url 'search' %}" method="GET">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="screen-reader-text" for="widget-search">Search for:</label>
+              <input id="widget-search" type="text" value="" name="keyword" class="form-control" placeholder="Search keyword">
+            </div>
+            <button type="submit" class="theme_button color1">Search</button>
+          </form>
+        </div>
+
+        <div class="widget widget_twitter">
+          <div>
+            <h3 class="widget-title">Latest Blog Articles</h3>
+          </div>
+          {% for latest in articles %}
+          <div>
+            <article class="vertical-item post format-standard with_background">
+
+              <div class="item-media entry-thumbnail">
+                <img src="{{ MEDIA_URL }}{{ latest.image }}" alt="">
+                <div class="media-links">
+                  <a class="abs-link" title="" href="{{ latest.get_url }}"></a>
+                </div>
+              </div>
+
+              <div class="item-content entry-content">
+                <div class="with_padding">
+                  <header class="entry-header">
+
+                    <h3 class="entry-title">
+                      <a href="{{ HTTP_HOST }}/blog/article/{{ latest.id }}" rel="bookmark">{{ latest.article_title }}</a>
+                    </h3>
+
+                  </header>
+                  <!-- .entry-header -->
+
+                  {% for paragraph in dispaly_paragraph %}
+                    {% if paragraph.id == latest.id %}
+                      <p>{{ paragraph.content }}</p>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <footer class="with_top_border entry-meta highlightlinks">
+                  <div class="content-justify">
+                    <span class="entry-date">
+                      <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
+                        {{ latest.created_date|date:"M, d, Y" }}
+                      </time>
+                    </span>
+                    <a href="#">by
+                      {% for paragraph in dispaly_paragraph %}
+                        {% if paragraph.id == latest.id %}
+                          {{ paragraph.authors.full_name }}
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </div>
+                </footer>
+
+
+              </div>
+              <!-- .item-content.entry-content -->
+            </article>
+          </div>
+          <br>
+          {% endfor %}
+        </div>
+
+
+
+
+      </aside>
+      <!-- eof aside sidebar -->
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
