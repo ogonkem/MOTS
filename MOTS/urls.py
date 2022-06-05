@@ -17,13 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import HomeView
+from .views import HomeView, AboutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
     path('', HomeView.as_view(), name='MOTS'),
+    path('about/', AboutView.as_view(), name='about'),
     path('blog/', include('blog.urls')),
+    path('communications/', include('communications.urls')),
+    path('testimony/', include('testimony.urls')),
+    path('event/', include('event.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

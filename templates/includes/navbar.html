@@ -1,6 +1,8 @@
 {% load static %}
 {% url 'MOTS' as home %}
 {% url 'blog' as blog %}
+{% url 'contact_us' as contact_us %}
+{% url 'testimonies' as testimonies %}
 
 <header class="page_header header_white toggler_right with_bottom_border_container">
   <div class="container">
@@ -23,15 +25,15 @@
             <ul class="mainmenu nav sf-menu">
               <li class = "{% if request.path == home %} active {% endif %}"><a href="{% url 'MOTS' %}">Home</a></li>
               <!-- blog -->
-              <li class = "{% if request.path == blog %} active {% endif %}"><a href="{% url 'blog' %}"">Blog</a></li>
-              <!-- features -->
-              <li><a href="#">Features</a></li>
+              <li class = "{% if request.path == blog %} active {% endif %}"><a href="{% url 'blog' %}">Blog</a></li>
               <!-- about -->
-              <li><a href="about.html">Pages</a></li>
+              <li class = "{% if request.path == blog %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+              <!-- pages -->
+              <li class = "{% if request.path == contact_us %} active {% endif %}"><a href="{% url 'contact_us' %}"">Contact Us</a></li>
               <!-- gallery -->
               <li><a href="gallery-regular.html">Gallery</a></li>
               <!-- contacts -->
-              <li><a href="contact.html">Contact</a></li>
+              <li class = "{% if request.path == testimonies %} active {% endif %}"><a href="{% url 'testimonies' %}"">Testimonies</a></li>
               <!-- eof contacts -->
             </ul>
           </nav>

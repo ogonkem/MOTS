@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'staff',
     'blog',
     'testimony',
+    'event',
+    'communications'
 
 ]
 
@@ -151,6 +153,7 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
 import os
 
 LOGGING = {

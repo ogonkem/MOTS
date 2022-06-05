@@ -54,9 +54,13 @@
   <!-- eof #box_wrapper -->
   </div>
 <!-- eof #canvas -->
-  <script src="{% static 'js/compressed.js' %}"></script>
+	<script src="{% static 'js/compressed.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script>
-
+	<script type="text/javascript">
+		setTimeout(function(){
+		$('#message').fadeOut('slow')
+		}, 4000)
+	</script>
 
 </body>
 

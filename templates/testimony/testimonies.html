@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="highlight bold">Testimonies</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'MOTS' %}">Home</a></li>
+                    <li class="active">Testimonies</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ls columns_padding_25 section_padding_top_100 section_padding_bottom_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 to_animate" data-animation="scaleAppear">
+
+                <h3 class="module-header">Testimony Form</h3>
+
+                {% include 'includes/alerts.html' %}
+
+                <form class="columns_padding_5" method="POST" action="{% url 'testimonies' %}">
+                    {% csrf_token %}
+
+
+                    <div class="col-sm-6">
+                        <div class="contact-form-name">
+                            <label for="name">First Name
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.first_name }}
+                            {% for err in form.first_name.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="contact-form-name">
+                            <label for="name">Last Name
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.last_name }}
+                            {% for err in form.last_name.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="contact-form-phone">
+                            <label for="phone">Phone
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.phone }}
+                            {% for err in form.phone.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-form-email">
+                            <label for="email">Email address
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.email }}
+                            {% for err in form.email.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="contact-form-name">
+                            <label for="name">City
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.City }}
+                            {% for err in form.City.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="contact-form-phone">
+                            <label for="phone">State
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.State }}
+                            {% for err in form.State.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="contact-form-email">
+                            <label for="email">Country
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.country }}
+                            {% for err in form.country.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="contact-form-subject">
+                            <label for="subject">Testimony Title
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.title }}
+                            {% for err in form.title.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                      
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+
+                        <div class="contact-form-message">
+                            <label for="message">Describe Testimony</label>
+                            {{ form.description }}
+                            {% for err in form.description.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="contact-form-message">
+                            <label for="message">Upload Image</label>
+                            {{ form.photo }}
+                            {% for err in form.photo.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="topmargin_30">
+                            <button type="submit" class="theme_button wide_button color1">Send Message</button>
+                            <button type="reset" class="theme_button wide_button">Clear Form</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="col-md-4 to_animate" data-animation="scaleAppear">
+
+                <div class="with_border with_padding_small">
+                    <ul class="list1 no-bullets no-top-border no-bottom-border">
+
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-shop highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Postal Address:</h5>
+                                    {{ org_links.organization.address_line_1 }}, {{ org_links.organization.city }}, {{ org_links.organization.country }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-phone5 highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Phone:</h5>
+                                    {{ org_links.organization.phone }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-stack4 highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Fax:</h5>
+                                    {{ org_links.organization.website_address }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-mail highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body greylinks">
+                                    <h5 class="media-heading grey">Email:</h5>
+                                    <a href="mailto:your@mail.com">{{ org_links.organization.email }}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="reviews" class="ls ms background_cover page_testimonials section_padding_100">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-push-6" style="background-color: rgba(255, 255, 255, 0.8); margin: 30px; padding: 30px;">
+          <h3>Testimonies</h3>
+          <h2 class="section_header highlight">What They Say</h2>
+          <div class="owl-carousel topmargin_40" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-dots="true">
+  
+            {% for testimony in testimonies %}
+            <blockquote class="with_quote bottommargin_0">
+              <h3 class="highlight">{{ testimony.title }}</h3>
+              {{ testimony.description }}
+              <div class="item-meta">
+                <h5>
+                  <a href="#">{{ testimony.first_name }} {{ testimony.last_name }}</a>
+                </h5>
+                <p>Ministry Member</p>
+              </div>
+            </blockquote>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+			

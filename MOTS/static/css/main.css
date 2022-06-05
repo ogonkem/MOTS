@@ -252,7 +252,7 @@ Border colors for elements in color section: rgba(255, 255, 255, 0.1)
 }
 
 .breadcrumb > .active {
-	color: #164591;
+	color: #ffffff;
 }
 
 .breadcrumb > li + li:before {
@@ -1398,8 +1398,8 @@ td .media-body {
 .alert {
 	border-radius: 0;
 	border-width: 0 0 0 4px;
-	padding: 30px;
-	margin-bottom: 40px;
+	/* padding: 30px;
+	margin-bottom: 40px; */
 }
 
 button.close {
@@ -5765,7 +5765,8 @@ a.logo.vertical_logo img {
 }
 
 .page_header {
-	transition: background 0.2s ease-in-out 0s, margin 0.6s ease-in-out 0s;
+	transition: background 0.2s ease-in-out 0s,
+ margin 0.6s ease-in-out 0s;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -7081,7 +7082,7 @@ body.active-side-header.slide-right .page_header_side {
 }
 
 .ds .highlight {
-	color: #164591;
+	color: #ffffff;
 }
 
 .ds .highlight2 {
@@ -10690,6 +10691,7 @@ aside .widget_tag_cloud a:hover {
 
 .small-teaser .media-body {
 	width: auto;
+	font-size: 12px;
 }
 
 .inline-elem {

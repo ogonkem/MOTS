@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="highlight bold">{{ events.type }}</h2>
+                <ol class="breadcrumb">
+                    <li><a href="./">Home</a></li>
+                    <li class="active">{{ events.event__name }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ls section_padding_top_100 section_padding_bottom_75 columns_padding_25">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 col-md-8 col-lg-8 col-sm-push-5 col-md-push-4 col-lg-push-4">
+                <article class="vertical-item content-padding with_background">
+                    <div class="item-media">
+                        <img src="{{ MEDIA_URL }}{{ photo.file }}" alt="" />
+                    </div>
+                    <div class="item-content">
+                        <h1 class="entry-title topmargin_0">{{ events.event__name }}</h1>
+                        <div class="item-meta highlight fontsize_18">
+                            {{ events.date|date:"M d, Y, h:m a" }} - {{ events.end_date|date:"M d, Y, h:m a" }}
+                        </div>
+                        
+                        <p>
+                            {{ events.event__description }}
+                        </p>
+                        <ul class="list2 grey">
+                            <li><span class="item-meta highlight fontsize_18">Address:</span> {{ events.address_line_1 }} {{ events.address_line_2 }}</li>
+                            <li><span class="item-meta highlight fontsize_18">City:</span> {{ events.city }}</li>
+                            <li><span class="item-meta highlight fontsize_18">State:</span> {{ events.state }}</li>
+                            <li><span class="item-meta highlight fontsize_18">Country:</span> {{ events.country }}</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="vertical-item content-padding with_background">
+                    {% for video in videos %}
+                    <div class="isotope-item col-lg-6 col-md-6 col-sm-12 category3">
+                        <div class="vertical-item content-padding with_background text-center">
+                            <div class="item-media">
+                                <iframe width="560" height="315" src="{{ video.youtube_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="item-content">
+                                <h4><a href="team-single.html">{{ video.name }}</a></h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </article>
+            </div>
+
+            
+            <!-- sidebar -->
+            <aside class="col-sm-5 col-md-4 col-lg-4 col-sm-pull-7 col-md-pull-8 col-lg-pull-8">
+
+                <div class="widget widget_search">
+                    <h3 class="widget-title">Ministers</h3>
+                    {% for preacher in preachers %}
+                    <div class="vertical-item content-padding with_background text-center">
+                        <div class="item-media">
+                            <img src="{{ MEDIA_URL }}{{ preacher.staff__photo }}" alt="" style="height: 300px;">
+                        </div>
+                        <div class="item-content">
+                            <h4><a href="team-single.html">{{ preacher.first_name }} {{ preacher.last_name }}</a></h4>
+
+                            <p class="small-text">{{ preacher.staff__job_title }}</p>
+
+                            <p class="social-icons">
+                                <a class="social-icon border-icon color-icon rounded-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
+                                <a class="social-icon border-icon color-icon rounded-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
+                                <a class="social-icon border-icon color-icon rounded-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
+                            </p>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="widget widget_search">
+                    <h3 class="widget-title">Search on Website</h3>
+                    <form method="get" class="searchform form-inline" action="./">
+                        <div class="form-group">
+                            <label class="screen-reader-text" for="widget-search">Search for:</label>
+                            <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Search keyword">
+                        </div>
+                        <button type="submit" class="theme_button color1">Search</button>
+                    </form>
+                </div>
+
+
+                <div class="widget widget_categories">
+
+                    <h3 class="widget-title">Other Sermons</h3>
+
+                    <ul class="greylinks">
+                        <li>
+                            <a href="#">You Must Know God’s category2</a>
+                        </li>
+                        <li>
+                            <a href="#">Christmas Carrols for Kids</a>
+                        </li>
+                        <li>
+                            <a href="#">Developing A Spiritual Mentality</a>
+                        </li>
+                        <li>
+                            <a href="#">10 Psalms for December</a>
+                        </li>
+                        <li>
+                            <a href="#">Vision for Hope &amp; Faith</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </aside>
+            <!-- eof aside sidebar -->
+        </div>
+    </div>
+</section>
+<section class="ls" style="padding-top: 100px;">
+    <div class="owl-carousel center-scale" data-responsive-lg="5" data-responsive-md="5" data-responsive-sm="3" data-responsive-xs="2" data-center="true" data-loop="true" data-margin="0" data-nav="true">
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/01.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/01.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/02.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/02.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/03.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/03.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/04.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/04.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/05.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/05.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/06.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/06.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/07.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/07.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="vertical-item content-absolute corporate consulting">
+        <div class="item-media">
+          <img src="{% static 'images/gallery_square/08.jpg' %}" alt="">
+          <div class="media-links">
+            <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/08.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+{% endblock %}

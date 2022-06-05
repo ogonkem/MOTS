@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="highlight bold">Contact</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="./">
+                Home
+            </a>
+                    </li>
+                    <li>
+                        <a href="#">Pages</a>
+                    </li>
+                    <li class="active">Contact</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} <section id="map" class="ls" data-address="Terracina, LT, Italia">
+    <!-- marker description and marker icon goes here -->
+    <div class="map_marker_description">
+        <h3>Map Title</h3>
+        <p>Map description text</p>
+        <img class="map_marker_icon" src="images/map_marker_icon.png" alt="">
+    </div>
+</section> {% endcomment %}
+
+<section class="ls columns_padding_25 section_padding_top_100 section_padding_bottom_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 to_animate" data-animation="scaleAppear">
+
+                <h3 class="module-header">Contact Form</h3>
+
+                {% include 'includes/alerts.html' %}
+
+                <form class="columns_padding_5" method="POST" action="{% url 'contact_us' %}">
+                    {% csrf_token %}
+
+
+                    <div class="col-sm-6">
+                        <div class="contact-form-name">
+                            <label for="name">Full Name
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.full_name }}
+                            {% for err in form.full_name.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="contact-form-phone">
+                            <label for="phone">Phone
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.phone_number }}
+                            {% for err in form.phone_number.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-form-email">
+                            <label for="email">Email address
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.email }}
+                            {% for err in form.email.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-form-subject">
+                            <label for="subject">Channel
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.channel }}
+                            {% for err in form.channel.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                      
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="contact-form-subject">
+                            <label for="subject">Subject
+                                <span class="required">*</span>
+                            </label>
+                            {{ form.subject }}
+                            {% for err in form.subject.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                      
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+
+                        <div class="contact-form-message">
+                            <label for="message">Message</label>
+                            {{ form.message }}
+                            {% for err in form.message.errors %}
+                                <small class="text-danger">{{ err }}</small>
+                            {% endfor %}                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="topmargin_30">
+                            <button type="submit" class="theme_button wide_button color1">Send Message</button>
+                            <button type="reset" class="theme_button wide_button">Clear Form</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="col-md-4 to_animate" data-animation="scaleAppear">
+
+                <div class="with_border with_padding_small">
+                    <ul class="list1 no-bullets no-top-border no-bottom-border">
+
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-shop highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Postal Address:</h5>
+                                    {{ org_links.organization.address_line_1 }}, {{ org_links.organization.city }}, {{ org_links.organization.country }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-phone5 highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Phone:</h5>
+                                    {{ org_links.organization.phone }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-stack4 highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading grey">Fax:</h5>
+                                    {{ org_links.organization.website_address }}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <i class="rt-icon2-mail highlight fontsize_18"></i>
+                                </div>
+                                <div class="media-body greylinks">
+                                    <h5 class="media-heading grey">Email:</h5>
+                                    <a href="mailto:your@mail.com">{{ org_links.organization.email }}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+			

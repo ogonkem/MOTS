@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="highlight bold">About</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="{% url 'MOTS' %}">
+        Home
+      </a>
+          </li>
+          <li class="active">About</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="ls section_padding_top_100 section_padding_bottom_75 columns_margin_bottom_30">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="horiz_lg_padding">
+          <h3 class= "text-center">About</h3>
+          <h2 class="section_header highlight text-center">{{ org_links.organization }}</h2>
+          <p class="grey playfair">{{ org_links.organization_mandate }}</p>
+          <p>{{ org_links.organization_overview }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row vertical-tabs">
+        <div class="col-sm-5">
+
+          <!-- Nav tabs -->
+          <ul class="nav" role="tablist">
+            <li class="active">
+              <a href="#vertical-tab1" role="tab" data-toggle="tab">Mission Statement</a>
+            </li>
+            <li>
+              <a href="#vertical-tab2" role="tab" data-toggle="tab">Vision</a>
+            </li>
+            <li>
+              <a href="#vertical-tab3" role="tab" data-toggle="tab">Philosophy</a>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="col-sm-7">
+
+          <!-- Tab panes -->
+          <div class="tab-content no-border">
+            <div class="tab-pane fade in active" id="vertical-tab1">
+              <h3>Mission Statement</h3>
+              <p>{{org_links.mission_statement}}</p>
+
+            </div>
+            <div class="tab-pane fade" id="vertical-tab2">
+              <h3>Vision</h3>
+              <p>{{org_links.vision}}</p>
+
+            </div>
+            <div class="tab-pane fade" id="vertical-tab3">
+              <h3>Philosophy</h3>
+              <p>{{org_links.philosophy}}</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ls" style="padding-top: 100px; padding-bottom: 100px;">
+  <div class="owl-carousel center-scale" data-responsive-lg="5" data-responsive-md="5" data-responsive-sm="3" data-responsive-xs="2" data-center="true" data-loop="true" data-margin="0" data-nav="true">
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/01.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/01.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/02.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/02.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/03.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/03.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/04.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/04.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/05.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/05.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/06.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/06.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/07.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/07.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-item content-absolute corporate consulting">
+      <div class="item-media">
+        <img src="{% static 'images/gallery_square/08.jpg' %}" alt="">
+        <div class="media-links">
+          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/08.jpg' %}"></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="events" class="ls section_padding_top_100 section_padding_bottom_100">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+            <a href="#tab1" role="tab" data-toggle="tab">Weekly events</a>
+          </li>
+          <!-- <li>
+            <a href="#tab2" role="tab" data-toggle="tab">Upcoming events</a>
+          </li> -->
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content no-border top-color-border">
+          <div class="tab-pane fade in active" id="tab1">
+
+            <div class="row columns_padding_2">
+              {% for weekly_event in weekly_events  %}
+              <div class="col-md-3 col-sm-6">
+                <div class="vertical-item content-absolute vertical-center content-bg-hover cs">
+                  <div class="item-media">
+                    <img src="{% static 'images/events/01.jpg' %}" alt="">
+                    <div class="media-links">
+                      <a class="abs-link" href="event-single-right.html"></a>
+                    </div>
+                  </div>
+                  <div class="item-content">
+                    <!-- <div> -->
+                    <h3 class="margin_0">
+                      {{ weekly_event.day }}
+                    </h3>
+                    <h4 class="margin_0">
+                      {{ weekly_event.name }}
+                    </h4>
+
+                    <div class="cs hovered-content thin">
+                      <div class="media small-teaser">
+                        <div class="media-left">
+                          <i class="fa fa-calendar grey fontsize_16"></i>
+                        </div>
+                        <div class="media-body">
+                          {{ weekly_event.day }}'s {{ weekly_event.time }} to {{ weekly_event.end_time }}
+                        </div>
+                      </div>
+                      <div class="media small-teaser">
+                        <div class="media-left">
+                          <i class="fa fa-map-marker grey fontsize_16"></i>
+                        </div>
+                        <div class="media-body">
+                          {{ weekly_event.city }}, {{ weekly_event.state }}
+                        </div>
+                      </div>
+                      <div class="media small-teaser">
+                        <div class="media-left">
+                          <i class="fa fa-phone grey fontsize_16"></i>
+                        </div>
+                        <div class="media-body">
+                          {{ org_links.organization.phone }}
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </div> -->
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+
+            </div>
+            <!-- .row -->
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="ls ms background_cover page_testimonials section_padding_100">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-push-6" style="background-color: rgba(255, 255, 255, 0.8); margin: 30px; padding: 30px;">
+        <h3>Testimonies</h3>
+        <h2 class="section_header highlight">What They Say</h2>
+        <div class="owl-carousel topmargin_40" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-dots="true">
+
+          {% for testimony in testimonies %}
+          <blockquote class="with_quote bottommargin_0">
+            <h3 class="highlight">{{ testimony.title }}</h3>
+            {{ testimony.description }}
+            <div class="item-meta">
+              <h5>
+                <a href="#">{{ testimony.first_name }} {{ testimony.last_name }}</a>
+              </h5>
+              <p>Ministry Member</p>
+            </div>
+          </blockquote>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subscribe" class="section_subscribe cs parallax section_padding_50 table_section table_section_md">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-center text-md-left">
+        <h2 class="bottommargin_10">Do You Want To Be New Member?</h2>
+        <p class="fontsize_20 grey">We have a strong sense of community with parishioners.</p>
+      </div>
+      <div class="col-md-4 text-center text-md-right">
+        <div class="widget widget_mailchimp">
+          <form class="signup form-inline" action="./" method="get">
+            <div class="form-group inline-block">
+              <input class="mailchimp_email form-control" name="email" type="email" placeholder="Email Address">
+            </div>
+            <button type="submit" class="theme_button">Sign Up!</button>
+            <div class="response"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
