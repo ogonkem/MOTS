@@ -76,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'organization.context_processors.menu_links',
                 'blog.context_processors.menu_links',
+                'event.context_processors.event_links',
                 'django.template.context_processors.media',
             ],
         },
@@ -194,3 +195,11 @@ INTERNAL_IPS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# SMTP configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'evangelistopn@gmail.com'
+EMAIL_HOST_PASSWORD = 'nczpmlfaffdxsxdm'
+EMAIL_USE_TLS = True

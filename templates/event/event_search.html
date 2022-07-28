@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
 {% block content %}
-{% url 'search' as search %}
+{% url 'event_search' as event_search %}
+
 <section class="page_breadcrumbs ds parallax section_padding_top_65 section_padding_bottom_65">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        {% if request.path == search %}
+        {% if request.path == event_search %}
           <h2 class="highlight bold">Search Results</h2>
         {% else %}
-          <h2 class="highlight bold">Blog Articles</h2>
+          <h2 class="highlight bold">Events</h2>
         {% endif %}
 
         <ol class="breadcrumb">
@@ -19,9 +18,9 @@
             <a href="{% url 'MOTS' %}">Home</a>
           </li>
           <li>
-            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{{ request.META.HTTP_REFERER }}">Event</a>
           </li>
-          <li class="active">Articles</li>
+          <li class="active">Events</li>
         </ol>
       </div>
     </div>
@@ -34,16 +33,16 @@
       <div class="col-sm-12">
 
         <div class="isotope_container isotope row masonry-layout columns_bottom_margin_30">
-          {% if articles  %}
-          {% for article in articles %}
+          {% if events_list  %}
+          {% for event in events_list %}
           <div class="isotope-item col-sm-4 col-md-6 col-sm-12">
 
             <article class="vertical-item content-padding mosaic-post post format-standard text-center with_border">
 
               <div class="item-media entry-thumbnail">
-                <img src="{{ MEDIA_URL }}{{ article.image }}" alt="">
+                <img src="{{ MEDIA_URL }}{{ event.photo.file }}" alt="">
                 <div class="media-links">
-                  <a class="abs-link" title="" href="{{ HTTP_HOST }}/blog/article/{{article.id}}"></a>
+                  <a class="abs-link" title="" href="blog-single-right.html"></a>
                 </div>
               </div>
 
@@ -51,38 +50,32 @@
                 <header class="entry-header">
 
                   <h3 class="entry-title">
-                    <a href="{{ HTTP_HOST }}/blog/article/{{article.id}}" rel="bookmark">{{ article.article_title }}</a>
+                    <a href="blog-single-right.html" rel="bookmark">{{ event.name }}</a>
                   </h3>
 
                   <span class="date">
                     <time datetime="2017-01-10T15:05:23+00:00" class="entry-date">
-                      {{ article.created_date|date:"M, d, Y" }}
+                      {{ event.date|date:"M d, Y, h:m a" }}
+                    </time> -
+                    <time datetime="2017-01-10T15:05:23+00:00" class="entry-date">
+                      {{ event.end_date|date:"M d, Y, h:m a" }}
                     </time>
                   </span>
 
                 </header>
                 <!-- .entry-header -->
-
-                {% for paragraph in dispaly_paragraph %}
-                  {% if paragraph.id == article.id %}
-                    <p>{{ paragraph.content }}</p>
-                  {% endif %}
-                {% endfor %}
+                    <p>{{ event.desc }}</p>
 
               </div>
               <footer class="with_top_border entry-meta highlightlinks">
                 <div class="content-justify">
                   <span class="entry-date">
                     <time class="entry-date" datetime="2017-03-13T08:50:40+00:00">
-                      {{ article.created_date|date:"M, d, Y" }}
+                      {{ event.created_date|date:"M, d, Y" }}
                     </time>
                   </span>
-                  <a href="{{ article.get_url }}">by
-                    {% for paragraph in dispaly_paragraph %}
-                      {% if paragraph.id == article.id %}
-                        {{ paragraph.authors.first_name }} {{ paragraph.authors.last_name }}
-                      {% endif %}
-                    {% endfor %}
+                  <a href="#">Ministering
+                    {{ event.preacher.first_name }} {{  event.preacher.last_name }}
                   </a>
                 </div>
               </footer>

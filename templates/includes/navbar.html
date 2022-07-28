@@ -11,7 +11,7 @@
         <div class="header_left_logo display_table_cell">
           <a href="./" class="logo top_logo">
             <!-- <img src="{% static 'images/logo.png' %}" alt=""> -->
-            <img src="{{ org_links.organization.logo.url }}" alt="" style="width: 68px; {% if request.path != home %} filter: invert(100%); {% endif %}">
+            <img src="{{ org_links.organization.logo.url }}" alt="" style="width: 68px;">
             <span class="logo_text">
               <strong class="playfair">{{ org_links.organization.organization_name }}</strong>
               <span class="small-text">Raising endtime saints</span>
@@ -29,10 +29,19 @@
               <!-- about -->
               <li class = "{% if request.path == blog %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
               <!-- pages -->
-              <li class = "{% if request.path == contact_us %} active {% endif %}"><a href="{% url 'contact_us' %}"">Contact Us</a></li>
-              <!-- gallery -->
-              <li><a href="gallery-regular.html">Gallery</a></li>
+              <li class = "{% if request.path == contact_us %} active {% endif %}"><a href="{% url 'contact_us' %}">Contact Us</a></li>
               <!-- contacts -->
+              <li>
+                <a href="#">Events</a>
+                <ul>
+                  {% for event in event_links %}
+                  <li>
+                    <a href="{{event.get_url}}">{{ event.event.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </li>
+								<!-- eof contacts -->
               <li class = "{% if request.path == testimonies %} active {% endif %}"><a href="{% url 'testimonies' %}"">Testimonies</a></li>
               <!-- eof contacts -->
             </ul>

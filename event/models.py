@@ -115,6 +115,7 @@ class Preacher(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
     is_host = models.BooleanField(default=False)
     title = models.CharField(max_length=50, blank=True, null=True)
+    photo = models.ImageField(upload_to='photos/preacher', blank=True, null=True)
 
     def full_name(self):
         return f'{self.first_name} {self.last_name}'

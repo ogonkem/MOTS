@@ -13,8 +13,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import EventView
+from .views import EventView, SearchView
 
 urlpatterns = [
     path('<int:event_id>/', EventView.as_view(), name='event'),
+    path('search/', SearchView.as_view(), name='event_search'),
 ]

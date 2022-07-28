@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h2 class="highlight bold">{{ events.type }}</h2>
+                <h2 class="highlight bold">{{ event.type }}</h2>
                 <ol class="breadcrumb">
                     <li><a href="./">Home</a></li>
-                    <li class="active">{{ events.event__name }}</li>
+                    <li class="active">{{ event.event__name }}</li>
                 </ol>
             </div>
         </div>
@@ -26,19 +26,19 @@
                         <img src="{{ MEDIA_URL }}{{ photo.file }}" alt="" />
                     </div>
                     <div class="item-content">
-                        <h1 class="entry-title topmargin_0">{{ events.event__name }}</h1>
+                        <h1 class="entry-title topmargin_0">{{ event.event__name }}</h1>
                         <div class="item-meta highlight fontsize_18">
-                            {{ events.date|date:"M d, Y, h:m a" }} - {{ events.end_date|date:"M d, Y, h:m a" }}
+                            {{ event.date|date:"M d, Y, h:m a" }} - {{ event.end_date|date:"M d, Y, h:m a" }}
                         </div>
                         
                         <p>
-                            {{ events.event__description }}
+                            {{ event.event__description }}
                         </p>
                         <ul class="list2 grey">
-                            <li><span class="item-meta highlight fontsize_18">Address:</span> {{ events.address_line_1 }} {{ events.address_line_2 }}</li>
-                            <li><span class="item-meta highlight fontsize_18">City:</span> {{ events.city }}</li>
-                            <li><span class="item-meta highlight fontsize_18">State:</span> {{ events.state }}</li>
-                            <li><span class="item-meta highlight fontsize_18">Country:</span> {{ events.country }}</li>
+                            <li><span class="item-meta highlight fontsize_18">Address:</span> {{ event.address_line_1 }} {{ event.address_line_2 }}</li>
+                            <li><span class="item-meta highlight fontsize_18">City:</span> {{ event.city }}</li>
+                            <li><span class="item-meta highlight fontsize_18">State:</span> {{ event.state }}</li>
+                            <li><span class="item-meta highlight fontsize_18">Country:</span> {{ event.country }}</li>
                         </ul>
                     </div>
                 </article>
@@ -88,11 +88,12 @@
                 </div>
 
                 <div class="widget widget_search">
-                    <h3 class="widget-title">Search on Website</h3>
-                    <form method="get" class="searchform form-inline" action="./">
+                    <h3 class="widget-title">Search event</h3>
+                    <form method="POST" class="form-inline" action="{% url 'event_search'%}">
+                      {% csrf_token %}
                         <div class="form-group">
                             <label class="screen-reader-text" for="widget-search">Search for:</label>
-                            <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Search keyword">
+                            <input id="widget-search" type="text" value="" name="keyword" class="form-control" placeholder="Search keyword">
                         </div>
                         <button type="submit" class="theme_button color1">Search</button>
                     </form>
@@ -101,24 +102,14 @@
 
                 <div class="widget widget_categories">
 
-                    <h3 class="widget-title">Other Sermons</h3>
+                    <h3 class="widget-title">Other Events</h3>
 
                     <ul class="greylinks">
+                      {% for e in events_list %}
                         <li>
-                            <a href="#">You Must Know God’s category2</a>
+                            <a href="{{ e.url }}">{{ e.name }} {{ e.date|date:"M d, Y, h:m a" }} {{ e.state }}</a>
                         </li>
-                        <li>
-                            <a href="#">Christmas Carrols for Kids</a>
-                        </li>
-                        <li>
-                            <a href="#">Developing A Spiritual Mentality</a>
-                        </li>
-                        <li>
-                            <a href="#">10 Psalms for December</a>
-                        </li>
-                        <li>
-                            <a href="#">Vision for Hope &amp; Faith</a>
-                        </li>
+                      {% endfor %}
                     </ul>
                 </div>
 

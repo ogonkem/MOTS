@@ -58,6 +58,7 @@ class BlogView(View):
             )
             dispaly_paragraph.append(paragraph_dict)
 
+        logger.info(articles)
         context = {
             'articles': articles,
             'dispaly_paragraph': dispaly_paragraph,

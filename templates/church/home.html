@@ -92,81 +92,40 @@
   </div>
 </section>
 
-<section class="ls" style="padding-top: 100px;">
-  <div class="owl-carousel center-scale" data-responsive-lg="5" data-responsive-md="5" data-responsive-sm="3" data-responsive-xs="2" data-center="true" data-loop="true" data-margin="0" data-nav="true">
 
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/01.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/01.jpg' %}"></a>
+<section class="ls page_portfolio section_padding_top_100 section_padding_bottom_0 columns_padding_0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="isotope_container isotope row masonry-layout" data-filters=".isotope_filters">
+          {% for events_photo in events_photos %}
+          <div class="isotope-item col-lg-4 col-md-4 col-sm-6 category3 category2">
+            <div class="vertical-item gallery-item content-absolute text-center ds">
+              <div class="item-media">
+                <img src="{{ MEDIA_URL }}{{ events_photo.file }}" alt="">
+                <div class="media-links">
+                  <div class="links-wrap">
+                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]" href="{{ MEDIA_URL }}{{ events_photo.file }}"></a>
+                    <a class="p-link" title="" href="gallery-single.html"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="item-content darken_gradient">
+                <h4>
+                  <a href="gallery-single.html">{{events_photo.event__name}}</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
         </div>
+        <!-- eof .isotope_container.row -->
+
+
       </div>
     </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/02.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/02.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/03.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/03.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/04.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/04.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/05.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/05.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/06.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/06.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/07.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/07.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="vertical-item content-absolute corporate consulting">
-      <div class="item-media">
-        <img src="{% static 'images/gallery_square/08.jpg' %}" alt="">
-        <div class="media-links">
-          <a class="abs-link prettyPhoto" data-gal="prettyPhoto[gal]" title="" href="{% static 'images/gallery/08.jpg' %}"></a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 

@@ -4,6 +4,11 @@ from .models import Enquiry
 from .forms import EnquiryForm
 from django.contrib import messages
 
+# Admin Email
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+
 # Create your views here.
 class EnquiryView(View):
     template_name = "communications/contact_us.html"
@@ -23,5 +28,21 @@ class EnquiryView(View):
             data.message = form.cleaned_data['message']
             data.channel = form.cleaned_data['channel']
             data.save()
-            messages.success(request, 'Thank you! Your enquiry has been submitted.')
+            messages.success(request, 'Thank you! Your enquiry would be attended to shortly.')
+
+            # Admin EMAIL
+            current_site = get_current_site(request)
+            mail_subject = f'{data.full_name} contacted you on {current_site} '
+            message = render_to_string('communications/communication_email.html', {
+                'name': data.full_name,
+                'email': data.email,
+                'phone': data.phone_number,
+                'subject': data.subject,
+                'message': data.message,
+                'domain': current_site
+            })
+            to_email = 'evangelistopn@gmail.com'
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.send()
+
             return redirect("contact_us")

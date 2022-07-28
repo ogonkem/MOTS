@@ -1,0 +1,18 @@
+{% autoescape off %}
+
+Hi {{user.first_name}},
+
+Hello,
+This is to inform you that you have been contacted by
+Name: {{ name }}
+Email: {{ email }}
+Phone: {{ phone }}
+Subject: {{ subject }}
+
+message
+{{ message }}
+
+
+if you liink it's not you, please ignore liis email.
+
+{% endautoescape %}

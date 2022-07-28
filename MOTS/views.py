@@ -4,12 +4,21 @@ from organization.models import Organization
 from staff.models import Staff
 from blog.models import Article, Author, Paragraph
 from testimony.models import Testimony
-from event.models import WeeklyEvent
+from event.models import ActualEvent, WeeklyEvent, EventPhoto
 import logging
 logger = logging.getLogger('django')
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
+        events_photos = EventPhoto.objects.select_related('event').all().values(
+            'name',
+            'file',
+            'created_date',
+            'event__name'
+
+
+        )
+
         weekly_events = WeeklyEvent.objects.select_related('event').filter(organization=1, organization__is_church='True').values(
             'day',
             'time',
@@ -20,6 +29,7 @@ class HomeView(View):
 
 
         )
+
         staff = Staff.objects.prefetch_related('organization').get(organization=1, organization__is_church='True', job_title = 'General Overseer')
         testimonies = Testimony.objects.filter(verified=True)[:3].values(
             'first_name',
@@ -41,6 +51,7 @@ class HomeView(View):
             dispaly_paragraph.append(paragraph_dict)
 
         context = {
+            'events_photos': events_photos,
             'weekly_events': weekly_events,
             'testimonies': testimonies,
             'staff': staff,

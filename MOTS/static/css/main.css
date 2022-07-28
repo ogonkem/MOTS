@@ -5492,7 +5492,7 @@ body.boxed {
 }
 
 .header_white a.logo {
-	color: #323232;
+	color: #164591;
 }
 
 .header_darkgrey {
@@ -5878,10 +5878,10 @@ a.logo.vertical_logo img {
 	color: #164591;
 }
 
-.intro_section + .page_header_wrapper .affix.header_white a.logo img {
+/* .intro_section + .page_header_wrapper .affix.header_white a.logo img {
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
-}
+} */
 
 .intro_section + .page_header_wrapper .with_bottom_border_container .container:after {
 	background-color: rgba(255, 255, 255, 0.1);
