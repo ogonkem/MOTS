@@ -2,3 +2,4 @@
 .dockerignore.
 
 notes.txt
+db.sqlite
